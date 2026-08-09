@@ -1,25 +1,333 @@
-HealthAI: Intelligent Healthcare Assistant Using IBM Granite 🏥🤖HealthAI is an AI-driven, real-time healthcare assistant leveraging IBM Granite Large Language Models (LLMs) and Streamlit. Designed to bridge the gap between complex medical information and everyday users, HealthAI offers empathetic conversational support, symptom-based disease evaluation, personalized treatment recommendations, and vital signs health analytics.🌟 Key Features1. 💬 Patient Chat (chat_interface.py)Empathetic QA: Provides reliable health, wellness, and medical information in easy-to-understand language.Guardrailed Responses: Context-aware prompts powered by IBM Granite with built-in safety boundaries to ensure responsible, non-diagnostic guidance.2. 🦠 Disease Prediction (disease_predictor.py)Symptom Analysis: Analyzes user-reported symptoms (e.g., fever, persistent cough, fatigue, headache).Smart Matching: Combines rule-based clinical matrices and model reasoning to outline potential conditions for further investigation by a physician.3. 💊 Personalized Treatment Plans (treatment_generator.py)Tailored Care Advice: Generates custom treatment guidelines incorporating patient demographics (age, gender, pre-existing conditions).Actionable Recommendations: Details standard over-the-counter considerations, lifestyle/dietary modifications, home care routines, and suggested diagnostic tests.4. 📊 Health Analytics Dashboard (analytics_dashboard.py)Vitals Tracker: Log and monitor key health vitals including Blood Pressure (BP), Heart Rate, Blood Sugar, and Pulse.Visual Trend Analysis: Powered by pandas and matplotlib to render trend graphs and highlight abnormal metric spikes.AI Health Insights: Summarizes historical trends with actionable wellness tips.🛠️ Technology StackFrontend: StreamlitBackend: Python 3.8+AI Model: IBM Granite (ibm/granite-13b-instruct-v2 / ibm/granite-3.2b-instruct via IBM Watsonx.ai or Hugging Face)Data Processing & Visualization: Pandas, NumPy, MatplotlibEnvironment Configuration: python-dotenv📁 Repository StructureIntelligent-Healthcare-Assistant-Using-IBM-Granite/
-├── app.py                      # Main Streamlit web application entry point
-├── disease_predictor.py        # Disease prediction logic & interface
-├── treatment_generator.py      # Personal treatment plan generator module
-├── chat_interface.py           # Conversational patient assistant
-├── analytics_dashboard.py      # Health vitals visualizer & dashboard
-├── requirements.txt            # Python package dependencies
-├── .env.example                # Sample environment configuration file
-└── README.md                   # Project documentation
-⚙️ Installation & SetupPrerequisitesPython 3.8+ installed on your system.An API Key for IBM Watsonx.ai or Hugging Face to query IBM Granite models.Step-by-Step InstructionsClone the Repositorygit clone https://github.com/Karthikeya-0/Intelligent-Healthcare-Assistant-Using-IBM-Granite.git
-cd Intelligent-Healthcare-Assistant-Using-IBM-Granite
-Create and Activate a Virtual Environment# Windows
-python -m venv venv
-venv\Scripts\activate
+# 🏥 Intelligent Healthcare Assistant Using IBM Granite
 
-# macOS / Linux
-python3 -m venv venv
-source venv/bin/activate
-Install Dependenciespip install -r requirements.txt
-Configure Environment VariablesCreate a .env file in the project root directory (or copy .env.example):IBM_WATSONX_APIKEY=your_ibm_watsonx_api_key_here
-WATSONX_PROJECT_ID=your_watsonx_project_id_here
-# Alternative: Hugging Face Token (if accessing via HF Hub)
-HF_TOKEN=your_huggingface_token_here
-Launch the Applicationstreamlit run app.py
-Access the web application in your browser at http://localhost:8501.🚀 Usage GuidePatient Chat: Navigate to the chat tab to ask general health and wellness questions.Disease Prediction: Select your symptoms from the options provided and click Analyze to review potential medical insights.Treatment Generator: Fill in medical context (age, gender, pre-existing conditions) and condition names to receive personalized care suggestions.Health Analytics: Input vital statistics (BP, heart rate, blood sugar) to view interactive charts and trend summaries.🛡️ DisclaimerIMPORTANT MEDICAL NOTICE:HealthAI is developed strictly for educational, demonstration, and research purposes. It is NOT a replacement for professional medical advice, diagnosis, or treatment. Always consult with a qualified healthcare professional regarding any medical conditions or health decisions.🤝 ContributingContributions are welcomed! Follow these steps to contribute:Fork this repository.Create a feature branch (git checkout -b feature/AmazingFeature).Commit your changes (git commit -m 'Add AmazingFeature').Push to the branch (git push origin feature/AmazingFeature).Open a Pull Request.📜 LicenseDistributed under the MIT License.
+An AI-powered healthcare assistant designed to provide intelligent health-related insights through natural language interaction. The project integrates **IBM Granite foundation models** with a user-friendly application interface to demonstrate how generative AI can be applied to healthcare assistance.
+
+> ⚠️ **Disclaimer:** This project is intended for educational and demonstration purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment.
+
+---
+
+## 🚀 Overview
+
+The **Intelligent Healthcare Assistant** is an AI-based healthcare application that allows users to interact with an intelligent assistant and receive responses to health-related queries.
+
+The system explores the use of **IBM Granite**, IBM's family of enterprise-focused foundation models, for building AI-powered applications. IBM describes Granite as a family of foundation models covering language, code, and other modalities.
+
+The project focuses on combining:
+
+* 🤖 Generative AI
+* 🏥 Healthcare assistance
+* 💬 Natural-language interaction
+* 🧠 AI-powered health insights
+* 📊 Health information processing
+* 🌐 Interactive application development
+
+---
+
+## ✨ Key Features
+
+### 🤖 AI Healthcare Assistant
+
+Interact with the healthcare assistant using natural-language questions and receive AI-generated responses.
+
+### 💬 Patient Chat
+
+Provides a conversational interface for users to ask health-related questions.
+
+### 🧠 Intelligent Health Insights
+
+Uses IBM Granite-based AI capabilities to process user queries and generate relevant health information.
+
+### 🔍 Disease Information
+
+Provides informational responses related to diseases, symptoms, and general healthcare topics.
+
+### 💊 Treatment Information
+
+Provides general educational information about possible treatment approaches.
+
+> Medical decisions should always be made with the guidance of a qualified healthcare professional.
+
+### 📊 Health Analytics
+
+The project explores AI-assisted analysis of healthcare-related information to provide meaningful insights.
+
+---
+
+## 🧠 AI Model
+
+The project uses **IBM Granite** as the foundation-model technology.
+
+IBM Granite is an open foundation-model family developed by IBM for enterprise-focused AI applications.
+
+Depending on the project configuration, the model can be integrated through IBM's AI ecosystem to process natural-language prompts and generate responses.
+
+---
+
+## 🏗️ System Architecture
+
+```text
+                    ┌─────────────────────┐
+                    │       User          │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │  Healthcare UI      │
+                    │  / Chat Interface   │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │   Query Processing  │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │    IBM Granite      │
+                    │   Foundation Model  │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │ AI Generated Health │
+                    │      Response       │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │       User          │
+                    └─────────────────────┘
+```
+
+---
+
+## 🛠️ Technology Stack
+
+| Technology                      | Purpose                                |
+| ------------------------------- | -------------------------------------- |
+| **Python**                      | Application and AI integration         |
+| **IBM Granite**                 | Generative AI / foundation model       |
+| **Streamlit**                   | Interactive application interface      |
+| **IBM Watson / watsonx**        | AI model integration                   |
+| **Machine Learning**            | Health-related prediction and analysis |
+| **Natural Language Processing** | Processing user queries                |
+
+---
+
+## 📂 Repository Structure
+
+```text
+Intelligent-Healthcare-Assistant-Using-IBM-Granite/
+│
+├── Document/
+│   └── Project documentation
+│
+├── Project Files/
+│   ├── Project source files
+│   └── README/documentation
+│
+├── Video Demo/
+│   └── Application demonstration
+│
+└── README.md
+```
+
+The repository currently contains dedicated folders for project documentation, project files, and a video demonstration.
+
+---
+
+## 🔄 How It Works
+
+```text
+1. User enters a healthcare-related query
+                  ↓
+2. Application receives the query
+                  ↓
+3. Query is processed
+                  ↓
+4. IBM Granite processes the prompt
+                  ↓
+5. AI generates a response
+                  ↓
+6. Response is displayed to the user
+```
+
+---
+
+## 💡 Example Use Cases
+
+The assistant can be used for educational healthcare scenarios such as:
+
+* Understanding common symptoms
+* Learning about diseases
+* Exploring general treatment information
+* Asking healthcare-related questions
+* Receiving AI-generated health information
+* Exploring the application of Generative AI in healthcare
+
+---
+
+## 📋 Project Objectives
+
+The main objectives of this project are:
+
+1. Build an AI-powered healthcare assistant.
+2. Explore IBM Granite foundation models.
+3. Apply Generative AI to a healthcare use case.
+4. Provide a conversational user experience.
+5. Demonstrate practical integration of AI into an application.
+6. Explore how AI can assist users in accessing healthcare information.
+
+---
+
+## ⚙️ Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Karthikeya-0/Intelligent-Healthcare-Assistant-Using-IBM-Granite.git
+```
+
+### 2. Navigate to the Project
+
+```bash
+cd Intelligent-Healthcare-Assistant-Using-IBM-Granite
+```
+
+### 3. Install Dependencies
+
+If a `requirements.txt` file is provided in the project files:
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configure IBM Services
+
+Configure the required IBM AI / Granite credentials and environment variables according to the project implementation.
+
+**Never commit API keys, access tokens, passwords, or other secrets to GitHub.**
+
+### 5. Run the Application
+
+If the application uses Streamlit:
+
+```bash
+streamlit run app.py
+```
+
+> Replace `app.py` with the actual application entry point if the project uses a different filename.
+
+---
+
+## 🎥 Demo
+
+A video demonstration is included in the repository under:
+
+```text
+Video Demo/
+```
+
+The demo showcases the application's healthcare-assistant workflow and user interaction.
+
+---
+
+## 📚 Documentation
+
+Detailed project documentation is available in the repository under:
+
+```text
+Document/
+```
+
+and the project documentation included inside:
+
+```text
+Project Files/
+```
+
+---
+
+## 🔐 Responsible AI & Healthcare Safety
+
+Healthcare applications require special attention to safety and reliability.
+
+This project should be treated as an **educational AI assistant**, not a medical diagnostic system.
+
+The application should not be used to:
+
+* Replace a doctor or healthcare professional
+* Make emergency medical decisions
+* Prescribe medication
+* Provide definitive diagnosis
+* Replace professional medical examination
+
+AI-generated information may contain errors or inaccuracies and should be verified using qualified medical professionals and trusted healthcare sources.
+
+---
+
+## 📈 Future Enhancements
+
+Potential improvements include:
+
+* [ ] User authentication
+* [ ] Patient profile management
+* [ ] Secure medical-history storage
+* [ ] Voice-based healthcare assistant
+* [ ] Multilingual support
+* [ ] Medical document analysis
+* [ ] Symptom-based prediction
+* [ ] Healthcare recommendation engine
+* [ ] Doctor consultation integration
+* [ ] Explainable AI responses
+* [ ] AI safety and hallucination detection
+* [ ] Cloud deployment
+* [ ] Mobile application
+* [ ] Improved healthcare knowledge base
+
+---
+
+## 🧪 Research & Learning Areas
+
+This project demonstrates practical concepts in:
+
+* Generative AI
+* Large Language Models
+* IBM Granite
+* Natural Language Processing
+* Prompt Engineering
+* Machine Learning
+* Healthcare AI
+* Conversational AI
+* AI application development
+
+---
+
+## 👨‍💻 Author
+
+**Karthikeya Undavalli**
+
+GitHub:
+https://github.com/Karthikeya-0
+
+---
+
+## ⭐ Acknowledgements
+
+* **IBM Granite** for the foundation-model technology.
+* IBM's open Granite ecosystem and documentation for resources related to Granite models.
+
+---
+
+## 📄 License
+
+Please check the repository's licensing information before distributing or modifying this project.
+
+---
+
+## ⭐ Support
+
+If this project is useful or interesting, consider giving the repository a ⭐ on GitHub.
+
+**Repository:**
+https://github.com/Karthikeya-0/Intelligent-Healthcare-Assistant-Using-IBM-Granite
